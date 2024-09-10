@@ -3,7 +3,7 @@
 using namespace std;
 
 int main(){
-    int arr[6]={1, 3,2,5, 7, 8};
+    int arr[6]={1, 3,2,5, 8, 7};
 
     int temp;
     for (int i=1;i<6;i++){
