@@ -49,6 +49,31 @@ void insertatPosition(Node* &tail , Node* & head, int position, int d){
     temp->next = nodetoInsert;
 }
 
+void deleteNode(int position, Node* &head){
+    
+ 
+    if ( position ==1 ){
+        Node* temp=head;
+        head=head->next;
+        temp->next=NULL;
+        delete temp;
+    }
+
+    else{
+        Node* curr=head;
+        Node* prev=NULL;
+        int cnt=1;
+        while (cnt<position){
+            prev=curr;
+            curr=curr->next;
+            cnt++;
+        }
+        prev->next=curr->next;
+        curr->next=NULL;
+        delete curr;
+    }
+}
+
 void print(Node* &head){
     if ( head==NULL){
         cout<<"The List is empty";
@@ -72,5 +97,6 @@ int main(){
     insertatTail(tail, 15);
     insertatPosition(tail, head, 2, 19);
     insertatPosition(tail, head, 4, 94);
+    deleteNode(3,head);
     print(head);
 }
