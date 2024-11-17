@@ -58,7 +58,7 @@ void print(Node* &tail){
     do {
         cout<<tail->data<<" ";
         tail=tail->next;
-    }while(tail->next!=temp);
+    }while(tail!=temp);
     cout<<endl;
 }
 
@@ -98,7 +98,7 @@ void deleteNode(Node* &tail, int value){
 int main(){
     Node* tail=NULL;
     insertnode(tail, 4,2 );
-    insertnode(tail, 2,3 );
+    insertnode(tail, 2,5 );
     print(tail);
     return 0;
 }
