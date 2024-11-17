@@ -62,3 +62,11 @@ public:
     }
 
 };
+
+int main(){
+    Queue q;
+    q.enqueue(2);
+    q.dequeue();
+    cout<<q.front();
+    return 0;
+}
