@@ -6,18 +6,26 @@
 using namespace std;
 
 void traversal(map <int, list<int> > &adjList, map<int, bool> &visited, vector<int> &answer, int start) {
-    answer.push_back(start);
+    queue<int> q;
+    q.push(start);
     visited[start] = true;
+
+    while (!q.empty()) {
+        int front = q.front();
+        q.pop();
+        answer.push_back(front);
+
         // Visit all neighbors of the current node
-        for (size_t i = 0; i < answer.size(); i++) {
-            if (!visited[i]) {
-                traversal(adjList, visited, answer,i); 
+        for (list<int>::iterator it = adjList[front].begin(); it != adjList[front].end(); ++it) {
+            if (!visited[*it]) {
+                q.push(*it);
+                visited[*it] = true; // Mark as visited when adding to the queue
             }
         }
     }
+}
 
-
-vector<int> DFS(int n, vector<pair<int, int> > edges) {
+vector<int> BFS(int n, vector<pair<int, int> > edges) {
     map<int, list<int> > adjList;
     map<int, bool> visited;
     vector<int> answer;
@@ -56,13 +64,11 @@ int main() {
         edges[i] = make_pair(u, v);
     }
 
-    vector<int> solution = DFS(n, edges);
+    vector<int> solution = BFS(n, edges);
 
-    cout << "DFS Traversal: " << endl;
+    cout << "BFS Traversal: " << endl;
     for (size_t i = 0; i < solution.size(); i++) {
-        for ( size_t j=0;j<solution.size();j++){
-            cout << solution[j] << " ";
-        }
+        cout << solution[i] << " ";
     }
     cout << endl;
 
